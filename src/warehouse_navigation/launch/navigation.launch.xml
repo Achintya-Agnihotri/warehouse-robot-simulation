@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+    <let name="use_sim_time" value="true"/>
+
+    <let name="nav2_params"
+         value="$(find-pkg-share warehouse_navigation)/config/nav2_params.yaml"/>
+
+    <include file="$(find-pkg-share warehouse_navigation)/launch/navigation_no_collision.py">
+        <arg name="use_sim_time" value="$(var use_sim_time)"/>
+        <arg name="params_file" value="$(var nav2_params)"/>
+        <arg name="autostart" value="true"/>
+    </include>
+</launch>

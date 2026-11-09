@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<sdf version="1.9">
+  <model name="warehouse_package">
+    <static>true</static>
+    <link name="package_link">
+      <visual name="package_visual">
+        <geometry>
+          <box>
+            <size>0.35 0.35 0.30</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.85 0.45 0.08 1</ambient>
+          <diffuse>0.85 0.45 0.08 1</diffuse>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

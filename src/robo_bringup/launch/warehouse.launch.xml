@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- 1. Start Gazebo, robot, RViz and bridges -->
+    <include
+        file="$(find-pkg-share robo_bringup)/launch/my_robot_gazebo.launch.xml"/>
+
+    <!-- 2. Start SLAM Toolbox -->
+    <timer period="5.0">
+        <include
+            file="$(find-pkg-share slam_toolbox)/launch/online_async_launch.py">
+            <arg name="use_sim_time" value="true"/>
+            <arg name="slam_params_file"
+                 value="$(find-pkg-share warehouse_navigation)/config/mapper_params_online_async.yaml"/>
+        </include>
+    </timer>
+
+    <!-- 3. Start Nav2 -->
+    <timer period="12.0">
+        <include
+            file="$(find-pkg-share warehouse_navigation)/launch/navigation.launch.xml"/>
+    </timer>
+
+    <!-- 4. Start mission manager -->
+    <timer period="25.0">
+        <node
+            pkg="warehouse_mission_manager"
+            exec="mission_manager_node"
+            output="screen"/>
+    </timer>
+
+        <!-- Spawn warehouse package automatically -->
+    <timer period="3.0">
+        <node
+            pkg="ros_gz_sim"
+            exec="create"
+            args="-file $(find-pkg-share warehouse_navigation)/models/warehouse_package.sdf -name warehouse_package -x 3.68 -y 2.67 -z 0.15"
+            output="screen"/>
+    </timer>
+
+</launch>

@@ -1,0 +1,7 @@
+string task_id
+string pickup_station
+string dropoff_station
+int32 priority
+---
+bool success
+string message

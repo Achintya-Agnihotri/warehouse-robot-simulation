@@ -1,6 +1,11 @@
+# ROS 2 generated files
 build/
 install/
 log/
+
+# IDE files
 .vscode/
-__pycache__/
-*.pyc
+
+# Temporary files
+*.swp
+*~

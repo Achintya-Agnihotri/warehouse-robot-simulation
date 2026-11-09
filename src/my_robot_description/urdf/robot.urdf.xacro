@@ -9,5 +9,7 @@
     <xacro:include filename="mobile_robo_gazebo.xacro"/>
     <!-- Include camera -->
     <xacro:include filename="camera.xacro"/>    
+    <!-- Include lidar -->
+    <xacro:include filename="lidar.xacro"/>
 
 </robot>
